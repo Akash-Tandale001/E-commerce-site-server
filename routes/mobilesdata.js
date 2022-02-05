@@ -1,6 +1,6 @@
-const mobdata = {
-  "status":"ok",
-  "data": [
+const mobdata =
+ 
+   [
     {
       "id": "1",
       "name": "Samsung Galaxy A72 (8 GB RAM, 128 GB Storage, Awesome Violet)",
@@ -700,7 +700,7 @@ const mobdata = {
       "price": "₹ 15,499",
       "imageurl":
         "https://d2xamzlzrdbdbn.cloudfront.net/products/a9decabf-21e6-450c-bf4a-9e7b64601a8221131305_182x182.jpg",
-    },
-  ],
-};
+    }
+  ]
+
 module.exports = mobdata;

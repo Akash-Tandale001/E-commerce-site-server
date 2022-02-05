@@ -1,5 +1,5 @@
-const lapdata = {
-  data: [
+const lapdata = 
+[
     {
       id: "1",
       name: "Display Unit - Lenovo 81LK017UIN (L340) Laptop (9th Gen Core i5 / 8GB RAM / 1TB HDD / 15.6 (39.62 cm) FHD Display / 3GB NVIDIA 1050 Graphics / Win 10)",
@@ -672,6 +672,6 @@ const lapdata = {
       imageurl:
         "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8unmyEwAHXwJ/g4sRrwAAAABJRU5ErkJggg==",
     },
-  ],
-};
+  ]
+
 module.exports = lapdata;

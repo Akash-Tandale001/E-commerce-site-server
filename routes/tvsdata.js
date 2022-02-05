@@ -1,5 +1,5 @@
-const tvdata = {
-  data: [
+const tvdata =
+[
     {
       id: "1",
       name: "Sony HT-Z9F Cinematic 3.1Ch Soundbar with Dolby Atmos",
@@ -672,7 +672,7 @@ const tvdata = {
       imageurl:
         "https://d2xamzlzrdbdbn.cloudfront.net/products/af855aa2-62d2-460f-a6e7-7cb455f42e5e21190614_182x182.jpg",
     },
-  ],
-};
+  ]
+
 
 module.exports = tvdata;
