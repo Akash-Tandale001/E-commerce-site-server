@@ -5,6 +5,7 @@ const {
   createUser,
   contactus,
   deleteUser
+  ,getUser
 } = require("../Controller/AuthController");
 const {
   getProductByKeywords,
@@ -23,6 +24,7 @@ router.route("/auth/login").post(login);
 router.route("/auth/forgotPassword").put(forgotPassword);
 router.route("/auth/createStartupUser").post(createUser);
 router.route("/auth/deleteUser").delete(deleteUser)
+router.route("/auth/getUser").post(getUser);
 
 router.route("/contactUs").post(contactus)
 
