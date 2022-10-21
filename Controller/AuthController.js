@@ -143,6 +143,26 @@ exports.deleteUser = async (req, res) => {
   }
 };
 
+exports.getUser = async (req, res) => {
+    const { userName } = req.body;
+    try {
+      const user = await User.findOne({ userName: userName });
+      if (!user) {
+        res.status(401).json({ status: "error", message: "No user is present" });
+      }
+      res.status(200).json({ status: "ok",
+    data:{
+        firstName : user.firstName,
+        lastName :user.lastName,
+        email : user.email,
+        userType : user.userType,
+        userName :user.userName
+    } });
+    } catch (error) {
+      res.status(400).json({ status: "error", error: error.message });
+    }
+  };
+
 exports.contactus = async (req, res) => {
   const { name, email, message } = req.body;
   try {

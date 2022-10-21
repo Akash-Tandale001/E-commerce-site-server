@@ -12,7 +12,11 @@ const {
   updateProduct,
   deleteProduct,
   searchEmail,
-  searchUsername
+  searchUsername,
+  addToFaourites,
+  getToFaourites,
+  addToCart,
+  getToCart,
 } = require("../Controller/DataController");
 
 router.route("/auth/login").post(login);
@@ -29,5 +33,10 @@ router.route("/data/deleteProduct").delete(deleteProduct);
 
 router.route("/data/searchEmail").get(searchEmail);
 router.route("/data/searchUsername").get(searchUsername);
+
+router.route("/data/addToFaourites").post(addToFaourites);
+router.route("/data/addToCart").post(addToCart);
+router.route("/data/getToFaourites").post(getToFaourites);
+router.route("/data/getToCart").post(getToCart);
 
 module.exports = router;
