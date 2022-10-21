@@ -38,13 +38,13 @@ exports.createUser = async (req, res, next) => {
   }
 };
 exports.login = async (req, res, next) => {
-  const { email, password } = req.body;
+  const { userName, password } = req.body;
 
-  if (!email || !password) {
-    res.status(400).json({ error: "Please Provide email and password" });
+  if (!userName || !password) {
+    res.status(400).json({ error: "Please Provide userName and password" });
   }
   try {
-    const user = await User.findOne({ email }).select("+password");
+    const user = await User.findOne({ userName }).select("+password");
 
     if (!user) {
       res.status(400).json({ error: "invalide credentials" });
