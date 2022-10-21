@@ -7,12 +7,12 @@ exports.createUser = async (req, res, next) => {
   try {
     let dateCreated = new Date();
     await User.create({
-      firstName: req.body.name,
-      lastName: req.body.phone,
-      userName: req.body.city,
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      userName: req.body.userName,
       email: req.body.email,
       password: req.body.password,
-      matchPassword: req.body.password,
+      matchPassword: req.body.matchingPassword,
       userType: "user",
       dateCreated: dateCreated,
     });

@@ -18,10 +18,7 @@ const userSchema = new mongoose.Schema({
     },  
     password:{
         type:String, required:[true ,"Please provide a Password"],select: false
-    }, 
-    matchPassword:{
-        type:String, required:[true ,"Please provide a MatchPassword"],select: false
-    }, 
+    } ,
     userType:{
         type:String, required:true
     },
