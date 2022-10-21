@@ -1,5 +1,5 @@
 const Product = require("../Model/Products");
-const rec = require("../routes/recommended");
+const User = require("../Model/User")
 
 exports.getProductByKeywords = async (req, res) => {
   try {
@@ -87,3 +87,35 @@ exports.deleteProduct = async (req, res) => {
     res.status(400).json({ status: "error", error: err.message });
   }
 };
+
+exports.searchEmail = async (req, res) => {
+    try {
+      const user = await User.findOne({ email: req.query.email });
+      if (!product) {
+        res.json({
+            status: "fail",
+          });
+      }
+      res.json({
+        status: "success",
+      });
+    } catch (err) {
+      res.status(400).json({ status: "error", error: err.message });
+    }
+  };
+  exports.searchUsername = async (req, res) => {
+    try {
+      const user = await User.findOne({ userName: req.query.username });
+      if (!product) {
+        res.json({
+            status: "fail",
+          });
+      }
+      res.json({
+        status: "success",
+      });
+    } catch (err) {
+      res.status(400).json({ status: "error", error: err.message });
+    }
+  };
+  

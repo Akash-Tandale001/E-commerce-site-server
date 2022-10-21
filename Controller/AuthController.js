@@ -1,10 +1,9 @@
 const User = require("../Model/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const nodemailer = require("nodemailer");
 const transporter = require("../Helper/MailTransporter");
 
-exports.createStartupUser = async (req, res, next) => {
+exports.createUser = async (req, res, next) => {
   try {
     let token = req.headers.authentication;
     const verifytoken = jwt.verify(token, process.env.REACT_APP_JWT_SECRETKEY);
@@ -85,12 +84,10 @@ exports.forgotPassword = async () => {
   const { email, password, confirmPassword } = req.body;
   try {
     if (password != confirmPassword) {
-      res
-        .status(401)
-        .json({
-          status: "error",
-          message: "Password and Confirm Password is not matching",
-        });
+      res.status(401).json({
+        status: "error",
+        message: "Password and Confirm Password is not matching",
+      });
     }
     await User.updateOne({ email: email }, { $set: { password: password } });
 
@@ -106,12 +103,10 @@ exports.forgotPassword = async () => {
       } else {
         console.log("Email sent : " + info.response);
       }
-      res
-        .status(200)
-        .json({
-          status: "success",
-          message: "Password has been successfully changed",
-        });
+      res.status(200).json({
+        status: "success",
+        message: "Password has been successfully changed",
+      });
     });
   } catch (error) {
     res.status(400).json({ status: "error", error: error.message });
