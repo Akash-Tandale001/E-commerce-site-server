@@ -1,7 +1,8 @@
 const User = require("../Model/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const transporter = require("../Helper/MailTransporter");
+// const transporter = require("../Helper/MailTransporter");
+const nodemailer = require("nodemailer");
 
 exports.createUser = async (req, res, next) => {
   try {
@@ -22,6 +23,16 @@ exports.createUser = async (req, res, next) => {
       subject: `Login credentials upstart `,
       text: `Hi,${req.body.name}\n \t Welcome to OneLand family your . So please use below login details for login in Oneland and up your startup\n Username : ${req.body.email} \n Password : ${req.body.password}\n\nThankyou...!`,
     };
+    const transporter = nodemailer.createTransport({
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true,
+        service: "gmail",
+        auth: {
+          user: process.env.REACT_APP_GMAIL_ID ,
+          pass: process.env.REACT_APP_GMAIL_PASSWORD ,
+        },
+      });
     transporter.sendMail(mailOption, (error, info) => {
       if (error) {
         console.log(error);
@@ -86,7 +97,16 @@ exports.forgotPassword = async () => {
       });
     }
     await User.updateOne({ email: email }, { $set: { password: password } });
-
+    const transporter = nodemailer.createTransport({
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true,
+        service: "gmail",
+        auth: {
+          user: process.env.REACT_APP_GMAIL_ID ,
+          pass: process.env.REACT_APP_GMAIL_PASSWORD ,
+        },
+      });
     const mailOption = {
       from: process.env.REACT_APP_GMAIL_ID,
       to: req.body.email,
