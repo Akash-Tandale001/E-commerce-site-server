@@ -5,10 +5,6 @@ const transporter = require("../Helper/MailTransporter");
 
 exports.createUser = async (req, res, next) => {
   try {
-    let token = req.headers.authentication;
-    const verifytoken = jwt.verify(token, process.env.REACT_APP_JWT_SECRETKEY);
-    if (!verifytoken)
-      return res.status(401).json({ error: "Unauthorized request" });
     let dateCreated = new Date();
     await User.create({
       firstName: req.body.name,

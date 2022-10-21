@@ -3,10 +3,10 @@ const User = require("../Model/User")
 
 exports.getProductByKeywords = async (req, res) => {
   try {
-    let token = req.headers.authentication;
-    const verifytoken = jwt.verify(token, process.env.REACT_APP_JWT_SECRETKEY);
-    if (!verifytoken)
-      return res.status(401).json({ error: "Unauthorized request" });
+    // let token = req.headers.authentication;
+    // const verifytoken = jwt.verify(token, process.env.REACT_APP_JWT_SECRETKEY);
+    // if (!verifytoken)
+    //   return res.status(401).json({ error: "Unauthorized request" });
     const products = await Product.find({ keyword: req.query.keyword });
     res.json({
       status: "success",
