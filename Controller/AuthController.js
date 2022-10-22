@@ -89,6 +89,7 @@ exports.login = async (req, res, next) => {
 
 exports.forgotPassword = async () => {
   const { email, password, confirmPassword } = req.body;
+  
   try {
     if (password != confirmPassword) {
       res.status(401).json({
