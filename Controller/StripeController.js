@@ -7,7 +7,7 @@ exports.getPayment=async (req, res) => {
                 currency: 'inr',
                 product_data: {
                   name: item.name,
-                  image: [item.imageurl],
+                  images: [item.imageurl],
                   metadata:{
                     id:item.id
                   }
