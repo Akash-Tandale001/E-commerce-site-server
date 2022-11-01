@@ -19,6 +19,7 @@ const {
   addToCart,
   getToCart,
 } = require("../Controller/DataController");
+const { getPayment } = require("../Controller/StripeController");
 
 router.route("/auth/login").post(login);
 router.route("/auth/forgotPassword").put(forgotPassword);
@@ -40,5 +41,7 @@ router.route("/data/addToFaourites").post(addToFaourites);
 router.route("/data/addToCart").post(addToCart);
 router.route("/data/getToFaourites").post(getToFaourites);
 router.route("/data/getToCart").post(getToCart);
+
+router.route("/auth/create-checkout-session").post(getPayment)
 
 module.exports = router;
