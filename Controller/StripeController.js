@@ -12,7 +12,7 @@ exports.getPayment=async (req, res) => {
                     id:item.id
                   }
                 },
-                unit_amount: parseInt(item.price.replaceAll(",", ""))*100,
+                unit_amount: parseInt(item.price.toString().replaceAll(',', ''))*100,
               },
               quantity: item.quantity,
         }
