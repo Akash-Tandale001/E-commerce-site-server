@@ -4,7 +4,7 @@ exports.getPayment=async (req, res) => {
   try {
     const line_items = req.body.list.map((item)=>{
       console.log(item.price)
-      let str = item.price.toString().replaceAll(',', '')
+      let str = item.price.replace(/,/g, "")
       let amount = parseInt(str)*100
       console.log(amount)
         return {
