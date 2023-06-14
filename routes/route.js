@@ -18,6 +18,7 @@ const {
   getToFaourites,
   addToCart,
   getToCart,
+  searchProduct,
 } = require("../Controller/DataController");
 const { getPayment } = require("../Controller/StripeController");
 
@@ -30,6 +31,7 @@ router.route("/auth/getUser").post(getUser);
 router.route("/contactUs").post(contactus)
 
 router.route("/data/getProductByKeyword").get(getProductByKeywords);
+router.route("/data/search").get(searchProduct)
 router.route("/data/addproducts").post(addProduct);
 router.route("/data/updateProduct").put(updateProduct);
 router.route("/data/deleteProduct").delete(deleteProduct);

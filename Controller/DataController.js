@@ -22,6 +22,22 @@ exports.getProductByKeywords = async (req, res) => {
   }
 };
 
+exports.searchProduct = async (req, res) => {
+  try {
+    const name = "/"+req.query.value+"/";
+    console.log(name)
+    const products = await Product.find({ keyword: req.query.keyword,name:{'$regex': req.query.value ,'$options': "i"}});
+    res.json({
+      status: "success",
+      data: {
+        data: products,
+      },
+    });
+  } catch (err) {
+    res.status(400).json({ status: "error", error: err.message });
+  }
+};
+
 exports.addProduct = async (req, res) => {
   try {
     let token = req.headers.authentication;
