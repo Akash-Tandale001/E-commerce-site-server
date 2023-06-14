@@ -7,9 +7,7 @@ const port = process.env.REACT_APP_PORT;
 const app = express();
 connectDB();
 app.use(express.json())
-app.use(cors({
-    origin: process.env.REACT_APP_CLIENT_URL
-  }));
+app.use(cors());
 app.use('/api',require('./routes/route'));
 
 app.listen(port , ()=>{
