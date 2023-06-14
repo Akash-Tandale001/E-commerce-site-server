@@ -1,7 +1,10 @@
 const stripe = require("stripe")(process.env.REACT_APP_STRIPE_KEY)
 
 exports.getPayment=async (req, res) => {
+  try {
     const line_items = req.body.list.map((item)=>{
+      let amount = parseInt(item.price.toString().replaceAll(',', ''))*100
+      console.log(amount)
         return {
             price_data: {
                 currency: 'inr',
@@ -12,7 +15,7 @@ exports.getPayment=async (req, res) => {
                     id:item.id
                   }
                 },
-                unit_amount: parseInt(item.price.toString().replaceAll(',', ''))*100,
+                unit_amount: amount,
               },
               quantity: item.quantity,
         }
@@ -24,4 +27,8 @@ exports.getPayment=async (req, res) => {
       cancel_url: `${process.env.REACT_APP_CLIENT_URL}/base/checkout-fail`,
     })
     res.send({url:session.url})
+  } catch (error) {
+    res.status(400).json({ status: "error", error: err.message });
+  }
+    
 }
