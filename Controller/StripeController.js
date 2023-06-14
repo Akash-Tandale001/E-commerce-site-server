@@ -3,7 +3,9 @@ const stripe = require("stripe")(process.env.REACT_APP_STRIPE_KEY)
 exports.getPayment=async (req, res) => {
   try {
     const line_items = req.body.list.map((item)=>{
-      let amount = parseInt(item.price.toString().replaceAll(',', ''))*100
+      console.log(item.price)
+      let str = item.price.toString().replaceAll(',', '')
+      let amount = parseInt(str)*100
       console.log(amount)
         return {
             price_data: {
@@ -29,6 +31,6 @@ exports.getPayment=async (req, res) => {
     res.send({url:session.url})
   } catch (err) {
     res.status(400).json({ status: "error", error: err.message });
-  }
+  } 
     
 }
